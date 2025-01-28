@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { URlXD } from '../../utils/localUrl';
+import { web } from '../../utils/localUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -14,27 +16,27 @@ token = sessionStorage.getItem('token')
 
 getFavoriteGames () {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`)
-    return this.http.get (`${this.apiUrl}/games`, {headers})
+    return this.http.get (`${web}/games`, {headers})
   }
 
 deleteGame (id: string) {
-    return this.http.delete(`${this.apiUrl}/deletegame/${id}`)
+    return this.http.delete(`${web}/deletegame/${id}`)
 }
 
 addGame (body: any) {
-    return this.http.post(`${this.apiUrl}/addgame`, body)
+    return this.http.post(`${web}/addgame`, body)
 }
 
 updateGame (id :string, body:any) {
-    return this.http.put(`${this.apiUrl}/updategame/${id}`, body)
+    return this.http.put(`${web}/updategame/${id}`, body)
 }
 
 getGame (id :string) {
-    return this.http.get(`${this.apiUrl}/game/${id}`)
+    return this.http.get(`${web}/game/${id}`)
 }
 
 searchGame (name: string) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`)
-    return this.http.get (`${this.apiUrl}/games/${name}`, {headers})
+    return this.http.get (`${web}/games/${name}`, {headers})
 }
 }

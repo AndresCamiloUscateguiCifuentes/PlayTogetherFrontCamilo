@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { URlXD } from '../../utils/localUrl';
+import { web } from '../../utils/localUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +13,13 @@ export class ShopService {
 
   getProducts () {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`)
-    return this.http.get(`${this.apiUrl}/products`, {headers})
+    return this.http.get(`${web}/products`, {headers})
     }
 
     busqueda(nombre:string) {
         const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`)
 
-        return this.http.get(`${this.apiUrl}/products/${nombre}`, {headers})
+        return this.http.get(`${web}/products/${nombre}`, {headers})
 
     }
 
