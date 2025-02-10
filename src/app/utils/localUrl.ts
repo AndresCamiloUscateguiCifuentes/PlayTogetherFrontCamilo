@@ -1,2 +1,2 @@
-export const URlXD = "http://localhost:3000/api"
-export const web = "http://3.15.148.48:3000/api"
+export const localUrl = 'http://localhost:3000/api';
+export const amazonUrl = 'http://44.211.249.255:3000/api';

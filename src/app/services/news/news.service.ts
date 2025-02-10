@@ -6,22 +6,14 @@ import { amazonUrl } from '../../utils/localUrl';
 @Injectable({
   providedIn: 'root'
 })
-export class ShopService {
+export class NewsService {
+
     token = sessionStorage.getItem('token')
-  constructor(private http : HttpClient) { }
+  constructor(private httpClient : HttpClient) { }
 
-  getProducts () {
+  getNews () {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`)
-    return this.http.get(`${localUrl}/products`, {headers})
+    return this.httpClient.get(`${localUrl}/news`)
     }
-
-    busqueda(nombre:string) {
-        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`)
-
-        return this.http.get(`${localUrl}/products/${nombre}`, {headers})
-
-    }
-
 
 }
-

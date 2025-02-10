@@ -1,14 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { URlXD } from '../../utils/localUrl';
-import { web } from '../../utils/localUrl';
+import { localUrl } from '../../utils/localUrl';
+import { amazonUrl } from '../../utils/localUrl';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JuegosmainService {
 
-apiUrl = "http://localhost:3000/api"
 token = sessionStorage.getItem('token')
 
   constructor(private http: HttpClient) { }
@@ -16,27 +15,31 @@ token = sessionStorage.getItem('token')
 
 getFavoriteGames () {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`)
-    return this.http.get (`${web}/games`, {headers})
+    return this.http.get (`${localUrl}/games`, {headers})
   }
 
 deleteGame (id: string) {
-    return this.http.delete(`${web}/deletegame/${id}`)
+    return this.http.delete(`${localUrl}/deletegame/${id}`)
 }
 
 addGame (body: any) {
-    return this.http.post(`${web}/addgame`, body)
+    return this.http.post(`${localUrl}/addgame`, body)
+}
+
+productoEditado (id: string, body: any) {
+    return this.http.put(`${localUrl}/updategame/${id}`, body)
 }
 
 updateGame (id :string, body:any) {
-    return this.http.put(`${web}/updategame/${id}`, body)
+    return this.http.get(`${localUrl}/game/${id}`)
 }
 
 getGame (id :string) {
-    return this.http.get(`${web}/game/${id}`)
+    return this.http.get(`${localUrl}/game/${id}`)
 }
 
 searchGame (name: string) {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`)
-    return this.http.get (`${web}/games/${name}`, {headers})
+    return this.http.get (`${localUrl}/games/${name}`, {headers})
 }
 }
